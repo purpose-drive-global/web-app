@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform, AnimatePresence, Variants } from "framer-motion" 
 import Image from "next/image";
-import { InfinitePhotoCarousel } from "./components/Infinitephotocarousel";
-import PhotoCarousel from "./components/PhotoCarousel";
 import Footer2 from "./components/Footer";
 import Curvedcarousel from "./components/PhotoCarousel";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 
 
@@ -111,14 +111,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  const pathname = usePathname();
+
+
   const link =[
     {
-    title: "Home",
-    href: "/"
-    },
-    {
-      title: "Who",
-      href: "/who"
+      title: "About",
+      href: "/about"
     },
     {
       title: "Partnership",
@@ -127,6 +126,10 @@ export function Navbar() {
     {
       title: "Programs",
       href: "/programs"
+    },
+    {
+      title: "Impact",
+      href: "/Impact"
     }
 ]
   return (
@@ -138,17 +141,19 @@ export function Navbar() {
     >
       <div className="w-full  bg-black flex px-4 sm:px-6 lg:px-8 items-center justify-between h-16">
         <div className="flex items-center  gap-2">
-        <Image
-          src="/8747f582c9e681594f027831c0ac1db3309cf1a5.png"
-          alt="Logo"
-          width={90}
-          height={40}
-          priority
-        />
+        <Link href="/">
+          <Image
+            src="/8747f582c9e681594f027831c0ac1db3309cf1a5.png"
+            alt="Logo"
+            width={90}
+            height={40}
+            priority
+          />
+        </Link>
         </div>
         <div className="hidden md:flex items-center gap-8">
           {link.map((item) => (
-            <a key={item.title} href={item.href} className="text-sm font-medium text-white hover:text-yellow-500 transition-colors duration-200">{item.title}</a>
+            <Link key={item.title} href={item.href} className={`text-sm font-medium  hover:text-yellow-500 ${pathname === item.href ? 'text-yellow-500' : 'text-white'}  transition-colors duration-200`}>{item.title}</Link>
           ))}
         </div>
         <motion.button
@@ -187,15 +192,6 @@ export function Navbar() {
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero() {
-  const heroImages = [
-    { bg: "bg-amber-200", label: "Youth Summit" },
-    { bg: "bg-orange-300", label: "Leadership" },
-    { bg: "bg-yellow-200", label: "Community" },
-    { bg: "bg-amber-300", label: "Empower" },
-    { bg: "bg-orange-200", label: "Network" },
-    { bg: "bg-yellow-300", label: "Transform" },
-    { bg: "bg-amber-400", label: "Africa" },
-  ];
   return (
     <section className="pt-24 pb-12 px-4 mt-16 text-center relative overflow-hidden bg-white">
       {/* BG glow */}
@@ -421,7 +417,7 @@ const memberships: MembershipItem[] = [
   },
 ];
 
-function Membership() {
+ function Membership() {
   return (
     <Section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
