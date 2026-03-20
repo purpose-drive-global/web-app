@@ -61,8 +61,8 @@ const page = () => {
       <Navbar />
       <Hero
         imageSrc="/d0fe74a2dbe9cbc5fbcf3844022826447f010ba9.png"
-        title="Our Story"
-        description="Built on the belief that Africa’s future belongs to bold, purpose-driven Gen Z leaders."
+        title="Our Impact"
+        description="A growing record of programs, events, and initiatives empowering Africa’s next generation of leaders."
       />
       <MembershipCards items={memberships} />
       <Footer2/>
