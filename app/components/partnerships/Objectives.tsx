@@ -94,7 +94,7 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
             >
               <div className="flex flex-col gap-3 mb-2">
                 <Image
-                  src="/frame (1).png"
+                  src="/Frame(1).png"
                   alt="Logo"
                   width={48}
                   height={48}
