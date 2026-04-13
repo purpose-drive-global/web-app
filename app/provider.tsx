@@ -9,6 +9,6 @@ type ProvidersProps = {
   children: ReactNode;
 };
 
-export function Providers({ children }: ProvidersProps): JSX.Element {
+export function Providers({ children }: ProvidersProps): React.ReactNode {
   return <Provider store={store}>{children}</Provider>;
 }
