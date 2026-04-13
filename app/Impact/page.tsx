@@ -7,27 +7,46 @@ import Hero from "../components/Hero";
 import { MembershipCards, MembershipItem } from "../components/Card";
 import { useGetEventsQuery } from "../redux/strapiApi";
 
+// Define a proper type for your event (adjust based on your API)
+interface EventType {
+  Title: string;
+  slug: string;
+  description?: {
+    children: { text: string }[];
+  }[];
+  coverImage?: {
+    url?: string;
+    formats?: {
+      medium?: { url?: string };
+    };
+  };
+}
+
 const Page = () => {
-  const { data, isLoading, isError } = useGetEventsQuery()
+  const { data, isLoading, isError } = useGetEventsQuery();
   console.log(data);
 
+  const memberships: MembershipItem[] =
+    data?.data?.map((event: EventType) => {
+      const descriptionText =
+        event.description
+          ?.map((block) =>
+            block.children.map((c) => c.text).join(" ")
+          )
+          .join("\n") || "";
 
+      const imageUrl =
+        event.coverImage?.formats?.medium?.url ||
+        event.coverImage?.url ||
+        "/placeholder.jpg";
 
-  const memberships: MembershipItem[] = data?.data?.map((event) => {
-    const descriptionText = event.description
-      .map((block) => block.children.map((c) => c.text).join(" "))
-      .join("\n");
-
-    const imageUrl =
-      event.coverImage?.formats.medium?.url || event.coverImage?.url || "/placeholder.jpg";
-
-    return {
-      title: event.Title,
-      slug: event.slug,
-      description: descriptionText,
-      image: imageUrl,
-    };
-  });
+      return {
+        title: event.Title,
+        slug: event.slug,
+        description: descriptionText,
+        image: imageUrl,
+      };
+    }) || [];
 
   return (
     <div>
@@ -50,54 +69,50 @@ const Page = () => {
         title="Our Impact"
         description="A growing record of programs, events, and initiatives empowering Africa’s next generation of leaders."
       />
-      {
-        isLoading ? (
-          <div className="px-6 md:px-12 py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="animate-pulse rounded-xl overflow-hidden shadow-md"
-                >
-                  {/* Image skeleton */}
-                  <div className="w-full h-48 bg-gray-300" />
 
-                  {/* Text skeleton */}
-                  <div className="p-4 space-y-3">
-                    <div className="h-4 bg-gray-300 rounded w-3/4" />
-                    <div className="h-4 bg-gray-200 rounded w-full" />
-                    <div className="h-4 bg-gray-200 rounded w-5/6" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )
-         : 
-          isError ? (
-            <div className="flex flex-col items-center justify-center py-20 text-center px-6">
-              <div className="bg-red-100 text-red-600 p-4 rounded-full mb-4">
-                ⚠️
-              </div>
-
-              <h2 className="text-2xl font-semibold mb-2">
-                Something went wrong
-              </h2>
-
-              <p className="text-gray-600 max-w-md mb-6">
-                We couldn’t load the events right now. It might be a network hiccup or server issue.
-              </p>
-
-              <button
-                onClick={() => window.location.reload()}
-                className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+      {isLoading ? (
+        <div className="px-6 md:px-12 py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="animate-pulse rounded-xl overflow-hidden shadow-md"
               >
-                Retry
-              </button>
-            </div>
-          )
-         :
-        <MembershipCards items={memberships} />}
+                <div className="w-full h-48 bg-gray-300" />
+                <div className="p-4 space-y-3">
+                  <div className="h-4 bg-gray-300 rounded w-3/4" />
+                  <div className="h-4 bg-gray-200 rounded w-full" />
+                  <div className="h-4 bg-gray-200 rounded w-5/6" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : isError ? (
+        <div className="flex flex-col items-center justify-center py-20 text-center px-6">
+          <div className="bg-red-100 text-red-600 p-4 rounded-full mb-4">
+            ⚠️
+          </div>
+
+          <h2 className="text-2xl font-semibold mb-2">
+            Something went wrong
+          </h2>
+
+          <p className="text-gray-600 max-w-md mb-6">
+            We couldn’t load the events right now. It might be a network hiccup or server issue.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+          >
+            Retry
+          </button>
+        </div>
+      ) : (
+        <MembershipCards items={memberships} />
+      )}
+
       <Footer2 />
     </div>
   );
