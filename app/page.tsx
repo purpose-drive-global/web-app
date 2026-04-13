@@ -88,7 +88,7 @@ function Ticker() {
             <span className="text-[#1a1a1a] font-bold">{item}</span>
         
               <Image
-                src="/Frame (2).png"
+                src="/Frame(2).png"
                 alt="Logo"
                 width={60}
                 height={60}
@@ -164,9 +164,9 @@ export function Navbar() {
           Become a Member
         </motion.button>
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2">
-          <div className={`w-5 h-0.5 bg-gray-900 transition-all ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`} />
-          <div className={`w-5 h-0.5 bg-gray-900 my-1 transition-all ${menuOpen ? "opacity-0" : ""}`} />
-          <div className={`w-5 h-0.5 bg-gray-900 transition-all ${menuOpen ? "-rotate-45 -translate-y-1.5" : ""}`} />
+          <div className={`w-5 h-0.5 bg-white transition-all ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`} />
+          <div className={`w-5 h-0.5 bg-white my-1 transition-all ${menuOpen ? "opacity-0" : ""}`} />
+          <div className={`w-5 h-0.5 bg-white transition-all ${menuOpen ? "-rotate-45 -translate-y-1.5" : ""}`} />
         </button>
       </div>
       <AnimatePresence>
@@ -214,7 +214,7 @@ function Hero() {
         >
           Vision
             <Image
-            src="/Vector 433.svg"
+            src="/Vector433.svg"
             alt="Logo"
             className="absolute bottom-0 w-full left-0"
             width={120}
@@ -340,7 +340,7 @@ function Pillars() {
             >
               <span className={`text-xl font-extrabold  ${p.textColor}`}>{p.title}</span>
               <Image
-                src="/frame.png"
+                src="/Frame.png"
                 alt="Logo"
                 width={120}
                 height={100}
@@ -382,7 +382,7 @@ function Objectives() {
             >
               <div className="flex flex-col gap-3 mb-2">
                 <Image
-                  src="/frame (1).png"
+                  src="/Frame(1).png"
                   alt="Logo"
                   width={48}
                   height={48}
@@ -403,14 +403,14 @@ function Objectives() {
 const memberships: MembershipItem[] = [
   {
     title: "General Membership",
-    image: "/Image (3).svg",
+    image: "/homeDard2.jpg",
     description: "Open to all youth; gain access to programs, events, mentorship, and opportunities. Connect with like-minded peers, develop your skills, and start building your path as a future Gen Z leader.",
     cta: "Become a Member",
     ctaColor: "bg-yellow-400 text-black",
   },
   {
     title: "ZLC – Leadership Club",
-    image: "/Image (2).svg",
+    image: "/homeDard1.jpg",
     description: "Invite-only members gain exclusive mentorship, early funding, and premium events. Connect with top leaders and innovators shaping Africa. Grow your skills, visibility, and impact in the Gen Z leadership ecosystem.",
     cta: "Apply for ZLC",
     ctaColor: "bg-yellow-400 text-black",
@@ -440,8 +440,8 @@ const memberships: MembershipItem[] = [
               <Image
                   src={m.image}
                   alt="Logo"
-                  className="w-full"
-                  width={48}
+                  className="w-full h-48 object-cover"
+                  width={300}
                   height={48}
                   priority
                 />
@@ -613,7 +613,7 @@ function AfricaRole() {
 }
 
 // ─── Partners ─────────────────────────────────────────────────────────────────
-const partnerNames = ["/Frame 161.svg", "/Frame 168.svg", "/Frame 299.svg", "/Frame 301.svg", "/Frame 166.svg"];
+const partnerNames = ["/Frame161.svg", "/Frame168.svg", "/Frame299.svg", "/Frame301.svg", "/Frame166.svg"];
 
 function Partners() {
   return (

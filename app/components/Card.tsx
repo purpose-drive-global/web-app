@@ -3,16 +3,18 @@
 import { useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
+// ─── Types ──────────────────────────────────────────────────────────
 export interface MembershipItem {
   title: string;
   image: string;
   description: string;
   ctaColor?: string;
+  slug: string;
 }
 
-
-// ─── Animation Variants ─────────────────────────────────────────────
+// ─── Animation ──────────────────────────────────────────────────────
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const scaleIn: Variants = {
@@ -51,31 +53,37 @@ function Section({
   );
 }
 
-// ─── Card Component ─────────────────────────────────────────────────
+// ─── Card ───────────────────────────────────────────────────────────
 function MembershipCard({
-    item,
-    index,
-    isLast,
-  }: {
-    item: MembershipItem;
-    index: number;
-    isLast: boolean;
-  }) {
+  item,
+  index,
+  isLast,
+}: {
+  item: MembershipItem;
+  index: number;
+  isLast: boolean;
+}) {
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    router.push(`/${item.slug}`);
+  };
+
   return (
     <motion.div
       variants={scaleIn}
       custom={index}
       whileHover={{ y: -6 }}
-      className={`rounded-2xl overflow-hidden border bg-[#FFBF0024] p-5 border-gray-100 shadow-sm hover:shadow-xl transition-shadow ${
-        isLast ? "flex  mt-10 mx-5 " : ""
-      }`}
+      className={`rounded-2xl overflow-hidden border bg-[#FFBF0024] p-5 border-gray-100 shadow-sm hover:shadow-xl transition-shadow
+        ${isLast ? "sm:col-span-2" : ""}
+      `}
     >
       <Image
         src={item.image}
         alt={item.title}
-        className="w-full"
+        className="w-full h-[300px] object-cover rounded-2xl"
         width={400}
-        height={200}
+        height={300}
       />
 
       <div className="p-6">
@@ -83,11 +91,12 @@ function MembershipCard({
           {item.title}
         </h3>
 
-        <p className="text-gray-500 text-sm leading-relaxed mb-4 h-24">
+        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-4">
           {item.description}
         </p>
 
         <motion.button
+          onClick={handleNavigation}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className={`${
@@ -101,7 +110,7 @@ function MembershipCard({
   );
 }
 
-// ─── Main Reusable Component ────────────────────────────────────────
+// ─── Main Component ─────────────────────────────────────────────────
 export function MembershipCards({
   items,
   className = "",
@@ -112,25 +121,20 @@ export function MembershipCards({
   return (
     <Section className={`py-16 px-4 bg-white mt-16 ${className}`}>
       <div className="max-w-6xl mx-auto">
-        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-10 px-5`}>
-          {items.slice(0,6).map((item, i) => (
-            <MembershipCard
-              key={item.title}
-              item={item}
-              index={i}
-              isLast={i === items.length - 1}
-            />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 px-5">
+          {items?.map((item, i) => {
+            const isLast = i === items.length - 1;
 
-
+            return (
+              <MembershipCard
+                key={item.slug || i}
+                item={item}
+                index={i}
+                isLast={isLast}
+              />
+            );
+          })}
         </div>
-            {items[6] && (<MembershipCard
-              key={items[6].title}
-              item={items[6]}
-              index={6}
-              isLast={6 === items.length - 1}
-             
-            />)}
       </div>
     </Section>
   );

@@ -91,21 +91,21 @@ export default function OurBeginning() {
         </div>
 
         {/* ── Right: Two photos ── */}
-        <div className="relative flex items-start justify-center gap-10">
+        <div className="relative flex items-start h-[500px] justify-center gap-10">
           {/* Photo 1 — taller, left */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={1}
-            className="relative shrink-0 rounded-2xl mt-10 overflow-hidden"
-            style={{ width: "40%", aspectRatio: "3/4" }}
+            className="relative rounded-2xl h-full mt-10 overflow-hidden"
+            style={{ width: "40%" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/about-1.jpg"
+              src="/compressed-balanced.jpg"
               alt="Two young women at the Gen Z Summit"
-              className="w-full h-full object-cover mt-10"
+              className="w-full h-full rounded-2xl object-cover mt-10"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
                 (e.currentTarget.nextSibling as HTMLElement).style.display = "flex";
@@ -124,12 +124,12 @@ export default function OurBeginning() {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={2}
-            className="relative shrink-0 rounded-2xl overflow-hidden  "
-            style={{ width: "40%", aspectRatio: "3/4" }}
+            className="relative shrink-0 rounded-2xl h-full overflow-hidden  "
+            style={{ width: "40%" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/about-2.jpg"
+              src="/compressed-balanced-2.jpg"
               alt="Speaker at the Gen Z Summit stage"
               className="w-full h-full object-cover"
               onError={(e) => {

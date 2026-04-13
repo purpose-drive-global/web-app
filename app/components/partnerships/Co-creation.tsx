@@ -39,8 +39,8 @@ export default function CoCreation() {
                     priority
                   />
           <Image
-                    src="/Rectangle 103.svg"
-                    className="relative rounded-xl  mt-10"
+                    src="/manwithboys.jpg"
+                    className="relative rounded-xl h-[300px] mt-10"
                     alt="Logo"
                     width={450}
                     height={200}

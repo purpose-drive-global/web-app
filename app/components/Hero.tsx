@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({
   height = "h-[85vh]",
 }) => {
   return (
-    <section className={`relative ${height} w-full`}>
+    <section className={`relative ${height} mt-16 w-full`}>
       <Image
         src={imageSrc}
         alt={title}
@@ -24,7 +24,7 @@ const Hero: React.FC<HeroProps> = ({
         className="absolute inset-0 top-16 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 top-16 bg-black/40" />
+      <div className="absolute inset-0  bg-black/60" />
 
       <div className="relative max-w-7xl mx-auto px-6 h-full flex items-center">
         <div className="text-white max-w-xl">

@@ -5,13 +5,13 @@ import Image from "next/image";
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 
 const images = [
-  "/image (1).png",
-  "/image (1).png",
-  "/image (1).png",
-  "/image (1).png",
-  "/image (1).png",
-  "/image (1).png",
-  "/image (1).png",
+  "/carousel1.png",
+  "/carousel2.png",
+  "/carousel3.png",
+  "/carousel4.png",
+  "/carousel5.jpg",
+  "/carousel6.jpg",
+  "/carousel7.png",
 ];
 
 export default function FilmCarousel() {
@@ -51,7 +51,7 @@ export default function FilmCarousel() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[500px] flex items-center justify-center overflow-hidden"
+    className="relative w-full h-[200px] md:h-[300px] lg:h-[500px] flex items-center justify-center overflow-hidden"
       onWheel={handleWheel}
     >
       <div className="relative w-full h-full perspective-[2000px]">
@@ -91,7 +91,7 @@ export default function FilmCarousel() {
                 zIndex: 100 - distance,
               }}
               transition={{ type: "spring", stiffness: 220, damping: 30 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 px-2 -translate-y-1/2 flex items-center justify-center"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 md:px-2 -translate-y-1/2 flex items-center justify-center"
               style={{ width: `${imageWidth}px`, height: "80%" }}
             >
               <div className="relative w-full h-full rounded-xl overflow-hidden shadow-xl">

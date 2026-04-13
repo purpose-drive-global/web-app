@@ -1,48 +1,33 @@
-import React from 'react'
-import { MembershipCards, MembershipItem } from '../components/Card'
-import { Navbar } from '../page'
-import Footer2 from '../components/Footer'
-import Hero from '../components/Hero'
+"use client";
+
+import React from "react";
+import { Navbar } from "../page";
+import Footer2 from "../components/Footer";
+import Hero from "../components/Hero";
+import { MembershipCards, MembershipItem } from "../components/Card";
+import { useGetEventsQuery } from "../redux/strapiApi";
+
+const Page = () => {
+  const { data, isLoading, isError } = useGetEventsQuery()
+  console.log(data);
 
 
-const page = () => {
 
-  const memberships: MembershipItem[] = [
-  {
-    title: "Gen Z Summit 1.0",
-    image: "/Image (3).svg",
-    description: "The inaugural Gen Z Summit brought together young leaders, innovators, and creators to explore leadership, media, technology, and entrepreneurship across Africa.",
-  },
-  {
-    title: "Gen Z Summit 2.0",
-    image: "/Image (3).svg",
-    description: "Building on the momentum of the first summit, Gen Z Summit 2.0 expanded conversations around opportunity, collaboration, and the growing influence of Africa’s next generation.",
-  },
-  {
-    title: "Gen Z Summit 3.0",
-    image: "/Image (2).svg",
-    description: "Gen Z Summit 3.0 continued the movement, convening emerging leaders, entrepreneurs, and changemakers for powerful conversations, networking, and future-focused collaboration.",
-  },{
-    title: "Gen Z Shapers — Mushin Edition",
-    image: "/Image (2).svg",
-    description: "The Gen Z Shapers program in Mushin empowered young people from underserved communities through leadership development, mentorship, and exposure to new opportunities.",
-  },
-  {
-    title: "Gen Z Shapers — Lagos Edition",
-    image: "/Image (2).svg",
-    description: "This Lagos edition of Gen Z Shapers brought together aspiring young leaders for hands-on sessions focused on leadership, personal growth, and community impact.",
-  },
-  {
-    title: "Gen Z Shapers — Ikorodu",
-    image: "/Image (2).svg",
-    description: "In Ikorodu, the Gen Z Shapers initiative engaged youth with leadership training, mentorship, and conversations designed to unlock their potential and inspire community change.",
-  },
-  {
-    title: "Gen Z Shapers — Abuja (Durumi IDP Camp)",
-    image: "/Image (2).svg",
-    description: "At the Durumi IDP Camp in Abuja, Gen Z Shapers created a powerful space for displaced youth to engage in leadership development, empowerment sessions, and future-focused learning.",
-  },
-];
+  const memberships: MembershipItem[] = data?.data?.map((event) => {
+    const descriptionText = event.description
+      .map((block) => block.children.map((c) => c.text).join(" "))
+      .join("\n");
+
+    const imageUrl =
+      event.coverImage?.formats.medium?.url || event.coverImage?.url || "/placeholder.jpg";
+
+    return {
+      title: event.Title,
+      slug: event.slug,
+      description: descriptionText,
+      image: imageUrl,
+    };
+  });
 
   return (
     <div>
@@ -58,16 +43,64 @@ const page = () => {
         html {
         scroll-behavior: smooth;
         }`}</style>
+
       <Navbar />
       <Hero
-        imageSrc="/d0fe74a2dbe9cbc5fbcf3844022826447f010ba9.png"
+        imageSrc="/homeDard1.jpg"
         title="Our Impact"
         description="A growing record of programs, events, and initiatives empowering Africa’s next generation of leaders."
       />
-      <MembershipCards items={memberships} />
-      <Footer2/>
-    </div>
-  )
-}
+      {
+        isLoading ? (
+          <div className="px-6 md:px-12 py-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="animate-pulse rounded-xl overflow-hidden shadow-md"
+                >
+                  {/* Image skeleton */}
+                  <div className="w-full h-48 bg-gray-300" />
 
-export default page
+                  {/* Text skeleton */}
+                  <div className="p-4 space-y-3">
+                    <div className="h-4 bg-gray-300 rounded w-3/4" />
+                    <div className="h-4 bg-gray-200 rounded w-full" />
+                    <div className="h-4 bg-gray-200 rounded w-5/6" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+         : 
+          isError ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center px-6">
+              <div className="bg-red-100 text-red-600 p-4 rounded-full mb-4">
+                ⚠️
+              </div>
+
+              <h2 className="text-2xl font-semibold mb-2">
+                Something went wrong
+              </h2>
+
+              <p className="text-gray-600 max-w-md mb-6">
+                We couldn’t load the events right now. It might be a network hiccup or server issue.
+              </p>
+
+              <button
+                onClick={() => window.location.reload()}
+                className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+              >
+                Retry
+              </button>
+            </div>
+          )
+         :
+        <MembershipCards items={memberships} />}
+      <Footer2 />
+    </div>
+  );
+};
+
+export default Page;

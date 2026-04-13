@@ -1,6 +1,7 @@
 import React from "react";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer2: React.FC = () => {
   return (
@@ -37,11 +38,19 @@ html {
 
           {/* Nav */}
           <div className="flex flex-wrap gap-6 text-sm text-gray-300">
-            <a href="#" className="hover:text-white">About</a>
-            <a href="#" className="hover:text-white">Programs</a>
-            <a href="#" className="hover:text-white">Membership</a>
-            <a href="#" className="hover:text-white">Impact</a>
-            <a href="#" className="hover:text-white">Contact</a>
+                 
+        <Link href={'/about'}>About</Link>
+        
+        
+        <Link href={'/partnerships'}>Partnership</Link>
+        
+        
+        <Link href={'/programs'}>Program</Link>
+        
+        
+        <Link href={'/Impact'}>Impact</Link>
+        
+
           </div>
 
           {/* Socials */}

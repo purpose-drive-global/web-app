@@ -48,85 +48,16 @@ export default function PotentialToPathways() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           custom={0}
-          className="relative flex items-center justify-center"
+          className=" "
         >
-            <div
-            style={{
-                background: "#f5c200",
-                borderRadius: "62% 78% 46% 94% / 60% 94% 45% 90%",
-              }}
-              className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px] lg:w-[480px] lg:h-[480px]">
-
-                 <Image
-                                  src="/Image (2).png"
-                                  alt="Logo"
-                                  className=" absolute -top-5 -left-2 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px] lg:w-[480px] lg:h-[480px]"
-                                  width={48}
+            <Image
+                                  src="/thinkingBoy1.jpg"
+                                  alt=""
+                                  className=" w-full"
+                                  width={480}
                                   height={48}
                                   priority
-                                  style={{
-                background: "#f5c200",
-                borderRadius: "62% 78% 46% 94% / 60% 94% 45% 90%",
-              }}
-                                />
-                            <Image
-                                  src="/Clip path group (6).svg"
-                                  alt="Logo"
-                                  className=" absolute -top-5 right-20 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[25px] lg:h-[25px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-                                <Image
-                                  src="/Clip path group (7).svg"
-                                  alt="Logo"
-                                  className=" absolute -top-5 right-12 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[30px] lg:h-[30px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-                                <Image
-                                  src="/Clip path group (8).svg"
-                                  alt="Logo"
-                                  className=" absolute -top-5 right-5 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-                                <Image
-                                  src="/Clip path group (5).svg"
-                                  alt="Logo"
-                                  className=" absolute -top-5 -right-2 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[50px] lg:h-[50px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-                                <Image
-                                  src="/Clip path group (9).svg"
-                                  alt="Logo"
-                                  className=" absolute top-5 -right-5 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-                                <Image
-                                  src="/Clip path group (10).svg"
-                                  alt="Logo"
-                                  className=" absolute top-12 -right-6 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[30px] lg:h-[30px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-                                <Image
-                                  src="/Clip path group (11).svg"
-                                  alt="Logo"
-                                  className=" absolute top-20 -right-5 w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[30px] md:h-[30px] lg:w-[20px] lg:h-[20px]"
-                                  width={48}
-                                  height={48}
-                                  priority
-                                />
-            </div>
-
+            />
         </motion.div>
 
         {/* ── Right: Text ── */}

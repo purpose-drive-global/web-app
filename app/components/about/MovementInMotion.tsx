@@ -107,12 +107,12 @@ export default function MovementInMotion() {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={1}
-            className="absolute top-0 right-0 rounded-2xl overflow-hidden shadow-2xl"
+            className="absolute top-0 right-0 rounded-2xl overflow-hidden"
             style={{ width: "75%", aspectRatio: "16/10" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/Rectangle 102 (1).svg"
+              src="/homeDard1.jpg"
               alt="Large auditorium event"
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -148,7 +148,7 @@ export default function MovementInMotion() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/Rectangle 103 (1).svg"
+              src="/carousel3.png"
               style={{ scale: 1.25, }}
               alt="Group of young leaders at PDG event"
               className="w-full h-full rounded-2xl object-cover"

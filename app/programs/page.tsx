@@ -11,48 +11,48 @@ const page = () => {
 
     const objectives = [
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "Gen Z Summit Africa",
     description:
       "Flagship leadership, media, tech & entrepreneurship summit.",
   },
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "PDG Leadership Institute",
     description: "Structured leadership development programs",
   },
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "Gen Z Shapers",
     description:
       "Leadership pipeline for underserved communities",
   },
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "Leadership Tours",
     description: "Real-world exposure to institutions & changemakers",
   },
 ]
 const objectives3 = [
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "Gen Z Happy Hour Show",
     description:
       "Monthly conversations on Gen Z’s lifestyle and more",
   },
   {
-    image: "/frame.png",
+    image: "Frame.png",
     title: "Gen Z Nation",
     description: "Community of 1,000+ Gen Z leaders across Media, Tech & Entrepreneurship",
   },
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "Gen Z Nation magazine",
     description:
       "Celebrating young African leaders",
   },
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "ZLC Members Club",
     description: "Inner circle for high-potential leaders",
   },
@@ -61,13 +61,13 @@ const objectives3 = [
 
 const objectives2 = [
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "PDG Talent Accelerator",
     description:
       "Skills, career & entrepreneurship tracks",
   },
   {
-    image: "/frame.png",
+    image: "/Frame.png",
     title: "Career Readiness & Innovation Labs",
     description: "Hands-on learning and industry exposure",
   }
@@ -91,30 +91,30 @@ html {
       `}</style>
       <Navbar />
       <Hero
-        imageSrc="/d0fe74a2dbe9cbc5fbcf3844022826447f010ba9.png"
-        title="Partner with PDG"
-        description="Built on the belief that Africa's future belongs to bold, purpose-driven Gen Z leaders."
+        imageSrc="/carousel5.jpg"
+        title="Programs & Initiatives"
+        description="Leadership. Learning. Lifestyle. All PDG initiatives are designed around four core pillars that shape how we raise, lead, empower and advocate for Africa’s Gen Z leaders."
       />
         <Objectives
             heading="Leadership"
             subheading="Raising bold, ethical, and capable leaders for Africa."
             text="Through structured exposure, mentorship, and civic engagement, we develop young leaders prepared to shape institutions, industries, and communities."
             items={objectives}
-            image='/frame (1).png'
+            image='/Frame(1).png'
         />
         <Objectives
             heading="Learning"
             subheading="Equipping Gen Z with skills for the future economy."
             text="We provide practical, future-ready learning experiences that strengthen career readiness, innovation, and entrepreneurship."
             items={objectives2}
-            image='/frame.svg'
+            image='/Frame.svg'
         />
         <Objectives
             heading="Lifestyle & Community"
             subheading="Building belonging, inspiration, and high-impact networks."
             text="Beyond skills and leadership, we create experiences that inspire growth, connection, and visibility for young African leaders."
             items={objectives3}
-            image='/Clip path group (3).svg'
+            image='/Clippathgroup(3).svg'
         />
         {/* <Objectives /><Objectives /><Objectives /> */}
         <CTASection/>
