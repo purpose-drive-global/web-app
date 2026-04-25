@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const strapiApi = createApi({
   reducerPath: "strapiApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:1337/api",
+    baseUrl: "https://pdg-strappi.onrender.com/api",
   }),
   endpoints: (builder) => ({
     // Tell TS the query argument is void and return type is any (or type your event)
