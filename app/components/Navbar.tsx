@@ -25,6 +25,8 @@ export default function Navbar() {
         </li>
         <li>
         <Link href={'/Impact'}>Impact</Link>
+        </li><li>
+        <Link href={'/Impact'}>Impact</Link>
         </li>
       </ul>
 

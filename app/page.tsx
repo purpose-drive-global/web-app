@@ -130,6 +130,10 @@ export function Navbar() {
     {
       title: "Impact",
       href: "/Impact"
+    },
+    {
+      title: "Team",
+      href: "/Team"
     }
 ]
   return (

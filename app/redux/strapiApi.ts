@@ -12,7 +12,11 @@ export const strapiApi = createApi({
     getEvents: builder.query<any, void>({
       query: () => "/events?populate=*",
     }),
+    
+    getTeams: builder.query<any, void>({
+      query: () => "/teams?populate=*",
+    }),
   }),
 });
 
-export const { useGetEventsQuery } = strapiApi;
+export const { useGetEventsQuery, useGetTeamsQuery } = strapiApi;
