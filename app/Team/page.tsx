@@ -152,12 +152,45 @@ const Page = () => {
       />
 
       {isLoading ? (
-        <div className="px-6 md:px-12 py-12 text-white">Loading team...</div>
-      ) : isError ? (
-        <div className="px-6 md:px-12 py-12 text-red-500">
-          Failed to load team
+        <div className="px-6 md:px-12 py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="animate-pulse rounded-xl overflow-hidden shadow-md"
+              >
+                <div className="w-full h-48 bg-gray-300" />
+                <div className="p-4 space-y-3">
+                  <div className="h-4 bg-gray-300 rounded w-3/4" />
+                  <div className="h-4 bg-gray-200 rounded w-full" />
+                  <div className="h-4 bg-gray-200 rounded w-5/6" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      ) : (
+      ) : isError ? (
+        <div className="flex flex-col items-center justify-center py-20 text-center px-6">
+          <div className="bg-red-100 text-red-600 p-4 rounded-full mb-4">
+            ⚠️
+          </div>
+
+          <h2 className="text-2xl font-semibold mb-2">
+            Something went wrong
+          </h2>
+
+          <p className="text-gray-600 max-w-md mb-6">
+            We couldn’t load our team right now. It might be a network hiccup or server issue.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+          >
+            Retry
+          </button>
+        </div>
+      ) :  (
         <>
           <TeamSection title="Board of Directors" members={grouped.board} onImageClick={setSelectedImage} />
           <TeamSection title="Chief of Staff" members={grouped.chief} onImageClick={setSelectedImage} />

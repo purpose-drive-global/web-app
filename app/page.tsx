@@ -248,6 +248,7 @@ function Hero() {
         custom={3}
         className="mt-7 flex justify-center gap-3 flex-wrap"
       >
+      <Link href="/partnerships">
         <motion.button
           whileHover={{ scale: 1.05, backgroundColor: "#facc15" }}
           whileTap={{ scale: 0.97 }}
@@ -255,6 +256,7 @@ function Hero() {
         >
           Patner with us
         </motion.button>
+      </Link>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
@@ -295,15 +297,17 @@ function Mission() {
       <motion.p variants={fadeUp} custom={3} className="mt-5 text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
         Half of the world’s population will be under 30 by 2030. PDG ensures young people are equipped to lead, innovate, and build Africa’s future today.
       </motion.p>
-      <motion.button
-        variants={fadeUp}
-        custom={4}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
-        className="mt-6 bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-300 transition-colors"
-      >
-        Learn More About PDG
-      </motion.button>
+      <Link href='/about'>
+        <motion.button
+          variants={fadeUp}
+          custom={4}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="mt-6 bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-300 transition-colors"
+        >
+          Learn More About PDG
+        </motion.button>
+      </Link>
     </Section>
   );
 }
@@ -324,14 +328,16 @@ function Pillars() {
             <motion.h2 variants={fadeUp} custom={0} className="text-2xl sm:text-3xl font-black text-gray-900">Three Pillars, One Pathway</motion.h2>
             <motion.p variants={fadeUp} custom={1} className="mt-1 text-gray-500 text-sm max-w-md">A holistic framework designed to shape purpose-driven leaders across Africa.</motion.p>
           </div>
-          <motion.button
-            variants={fadeUp}
-            custom={2}
-            whileHover={{ scale: 1.04 }}
-            className="bg-yellow-400 text-black px-5 py-2 rounded-full text-sm font-bold self-start sm:self-auto whitespace-nowrap"
-          >
-            Explore Programs
-          </motion.button>
+          <Link href="programs">
+            <motion.button
+              variants={fadeUp}
+              custom={2}
+              whileHover={{ scale: 1.04 }}
+              className="bg-yellow-400 text-black px-5 py-2 rounded-full text-sm font-bold self-start sm:self-auto whitespace-nowrap"
+            >
+              Explore Programs
+            </motion.button>
+          </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4  lg:w-[65%]">
           {pillars.map((p, i) => (
