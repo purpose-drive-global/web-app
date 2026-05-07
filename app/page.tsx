@@ -14,8 +14,8 @@ import Link from "next/link";
 interface StatItem { value: string; label: string; }
 interface PillarItem { title: string; color: string; textColor: string; }
 interface ObjectiveItem { icon: string; title: string; description: string; }
-interface MembershipItem { title: string; image: string; description: string; cta: string; ctaColor: string; }
-interface RoleItem { title: string; description: string; cta: string; color: string; }
+interface MembershipItem { title: string; image: string; description: string; cta: string; ctaColor: string; to:string }
+interface RoleItem { title: string; description: string; cta: string; color: string; to:string }
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -160,13 +160,15 @@ export function Navbar() {
             <Link key={item.title} href={item.href} className={`text-sm font-medium  hover:text-yellow-500 ${pathname === item.href ? 'text-yellow-500' : 'text-white'}  transition-colors duration-200`}>{item.title}</Link>
           ))}
         </div>
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="hidden md:block bg-yellow-400 text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-yellow-300 transition-colors"
-        >
-          Become a Member
-        </motion.button>
+        <Link href={'https://chat.whatsapp.com/HsiJurpXvXB1esSwzDiXyT?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnlPju7STW80gk066ke1GDbMbMwK0Gv8FQl-eKSN4fk6RBm_EEGtsL0cVv6ZA_aem_6muwNGMWwnu5YFkkgzIKxg'}>
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="hidden md:block bg-yellow-400 text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-yellow-300 transition-colors"
+          >
+            Become a Member
+          </motion.button>
+        </Link>
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2">
           <div className={`w-5 h-0.5 bg-white transition-all ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`} />
           <div className={`w-5 h-0.5 bg-white my-1 transition-all ${menuOpen ? "opacity-0" : ""}`} />
@@ -257,6 +259,7 @@ function Hero() {
           Patner with us
         </motion.button>
       </Link>
+      <Link href={'https://bit.ly/ZLeadersClubMembership'}>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
@@ -264,6 +267,7 @@ function Hero() {
         >
           Apply for ZLC
         </motion.button>
+      </Link>
       </motion.div>
 
      
@@ -417,6 +421,7 @@ const memberships: MembershipItem[] = [
     description: "Open to all youth; gain access to programs, events, mentorship, and opportunities. Connect with like-minded peers, develop your skills, and start building your path as a future Gen Z leader.",
     cta: "Become a Member",
     ctaColor: "bg-yellow-400 text-black",
+    to: "https://chat.whatsapp.com/HsiJurpXvXB1esSwzDiXyT?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnlPju7STW80gk066ke1GDbMbMwK0Gv8FQl-eKSN4fk6RBm_EEGtsL0cVv6ZA_aem_6muwNGMWwnu5YFkkgzIKxg"
   },
   {
     title: "ZLC – Leadership Club",
@@ -424,6 +429,7 @@ const memberships: MembershipItem[] = [
     description: "Invite-only members gain exclusive mentorship, early funding, and premium events. Connect with top leaders and innovators shaping Africa. Grow your skills, visibility, and impact in the Gen Z leadership ecosystem.",
     cta: "Apply for ZLC",
     ctaColor: "bg-yellow-400 text-black",
+    to: "https://bit.ly/ZLeadersClubMembership"
   },
 ];
 
@@ -458,13 +464,15 @@ const memberships: MembershipItem[] = [
               <div className="p-6">
                 <h3 className="font-black text-gray-900 text-lg mb-2">{m.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-4 h-24">{m.description}</p>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`${m.ctaColor} px-5 py-2 rounded-full font-bold text-sm`}
-                >
-                  {m.cta}
-                </motion.button>
+                <Link href={m.to}>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`${m.ctaColor} px-5 py-2 rounded-full font-bold text-sm`}
+                  >
+                    {m.cta}
+                  </motion.button>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -520,14 +528,16 @@ function Impact() {
           <motion.p variants={fadeUp} custom={2} className="mt-2 text-gray-500 text-sm max-w-xl mx-auto">
              Our programs have transformed youth across Africa by creating leaders, unlocking skills, and providing opportunities.
           </motion.p>
-          <motion.button
-            variants={fadeUp}
-            custom={3}
-            whileHover={{ scale: 1.04 }}
-            className="mt-4 bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold text-sm"
-          >
-            Read Our Impact Report
-          </motion.button>
+          <Link href={"/Impact"}>
+            <motion.button
+              variants={fadeUp}
+              custom={3}
+              whileHover={{ scale: 1.04 }}
+              className="mt-4 bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold text-sm"
+            >
+              Read Our Impact Report
+            </motion.button>
+          </Link>
         </div>
 
         <div className="space-y-6">
@@ -557,9 +567,9 @@ function Impact() {
 
 // ─── Africa Map / Role Section ────────────────────────────────────────────────
 const roles: RoleItem[] = [
-  { title: "Join", description: "Become part of our membership community or ZLC. ", cta: "Join Now", color: "bg-[#FFEFC9] text-black" },
-  { title: "Support", description: "Help fund leadership development, skills training, and opportunities that expand impact across Africa.", cta: "Support PDG", color: "bg-yellow-400 text-black" },
-  { title: "Partner", description: "Co-create initiatives, talent pipelines, and experiences that empower Africa’s next generation.", cta: "Partner With Us", color: "bg-gray-900 text-white" },
+  { title: "Join", description: "Become part of our membership community or ZLC. ", cta: "Join Now", color: "bg-[#FFEFC9] text-black", to: 'https://chat.whatsapp.com/HsiJurpXvXB1esSwzDiXyT?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnlPju7STW80gk066ke1GDbMbMwK0Gv8FQl-eKSN4fk6RBm_EEGtsL0cVv6ZA_aem_6muwNGMWwnu5YFkkgzIKxg' },
+  { title: "Support", description: "Help fund leadership development, skills training, and opportunities that expand impact across Africa.", cta: "Support PDG", color: "bg-yellow-400 text-black", to: '/partnerships' },
+  { title: "Partner", description: "Co-create initiatives, talent pipelines, and experiences that empower Africa’s next generation.", cta: "Partner With Us", color: "bg-gray-900 text-white", to: '/partnerships' },
 ];
 
 function AfricaRole() {
@@ -603,7 +613,8 @@ function AfricaRole() {
                 {r.cta} →
               </motion.button> */}
               <div className="bg-white h-16 flex items-center justify-center rounded-full w-16 absolute -bottom-1 -right-3">
-                <div className="bg-yellow-400 rounded-full h-10 w-10 flex items-center justify-center text-xs font-bold text-black">
+                <Link href={r.to}>
+                  <div className="bg-yellow-400 rounded-full h-10 w-10 flex items-center justify-center text-xs font-bold text-black">
                     <Image
                       src="/arrow-right.svg"
                       alt="Logo"
@@ -613,6 +624,7 @@ function AfricaRole() {
                       priority
                     />
                 </div>
+                </Link>
               </div>
             </motion.div>
           ))}
