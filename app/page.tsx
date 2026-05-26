@@ -238,9 +238,9 @@ function Hero() {
         initial="hidden"
         animate="visible"
         custom={2}
-        className="mt-4 text-gray-500 text-sm sm:text-base max-w-xl mx-auto"
+        className="mt-4 w- text-gray-500 text-sm sm:text-base max-w-xl mx-auto"
       >
-        We are a youth-led movement for the next generation in leadership, entrepreneurship and lifestyle.
+         We are a youth-led ecosystem driving leadership, learning, and lifestyle.
       </motion.p>
 
       <motion.div
@@ -501,7 +501,7 @@ function StatCard({ value, label, delay = 0 }: { value: string; label: string; d
 }
 
 const reachStats: StatItem[] = [
-  { value: "1k+", label: "Youth Impacted" },
+  { value: "10k+", label: "Youth Impacted" },
   { value: "30.5M+", label: "Digital Reach" },
   { value: "25", label: "Active Partners" },
   { value: "8", label: "African Countries" },
